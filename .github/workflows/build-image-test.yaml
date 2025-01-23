@@ -8,10 +8,6 @@ on:
 
 env:
   IMAGE_TAG: pr-test
-  IMAGE: >-
-    ghcr.io/
-      $(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')
-      :${{ env.IMAGE_TAG }}
 
 permissions:
   contents: read
@@ -40,6 +36,13 @@ jobs:
           tools/entrypoint.sh
           .github/workflows/build-image-test.yaml
           tools/*.sh
+
+    - name: Set IMAGE environment variable
+      run: >-
+        echo "IMAGE=ghcr.io/
+          $(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')
+          :${{ env.IMAGE_TAG }}" >> $GITHUB_ENV
+
 
     - name: Set up QEMU
       if: matrix.os != 'ubuntu-latest' || matrix.arch != 'amd64'
