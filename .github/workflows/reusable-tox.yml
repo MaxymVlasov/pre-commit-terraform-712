@@ -145,6 +145,11 @@ jobs:
       TOXENV: ${{ inputs.toxenv }}
 
     steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@v2
+      with:
+        egress-policy: audit
+
     - name: Export requested job-global environment variables
       if: inputs.environment-variables != ''
       run: >-
