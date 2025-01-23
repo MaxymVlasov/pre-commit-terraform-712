@@ -10,7 +10,8 @@ on:
     - synchronize
 
 permissions:
-  pull-requests: read # To read the PR title
+  contents: none
+  # pull-requests: read  # To read the PR title
 
 jobs:
   main:

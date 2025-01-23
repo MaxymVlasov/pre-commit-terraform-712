@@ -11,7 +11,8 @@ on:
   workflow_dispatch:  # manual trigger
 
 permissions:
-  contents: read # To read codebase
+  contents: none
+  # contents: read  # To read codebase
 
 run-name: >-
   🌃

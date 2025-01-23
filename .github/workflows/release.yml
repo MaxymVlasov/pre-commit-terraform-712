@@ -16,7 +16,8 @@ on:
     - '!tests/**'
 
 permissions:
-  contents: write # To create releases
+  contents: none
+  # contents: write  # To create releases
 
 jobs:
   release:

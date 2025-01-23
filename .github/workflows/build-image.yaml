@@ -9,10 +9,12 @@ on:
     - created
   schedule:
   - cron: 00 00 * * *
+  push:
 
 permissions:
-  contents: read # To read Dockerfile and codebase
-  packages: write # To publish container image
+  contents: none
+  # contents: read  # To read Dockerfile and codebase
+  # packages: write  # To publish container image
 
 jobs:
   docker:

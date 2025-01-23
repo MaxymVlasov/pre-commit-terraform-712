@@ -5,7 +5,8 @@ name: Common issues check
 on: [pull_request]
 
 permissions:
-  contents: write # Backpush pre-commit fixes
+  contents: none
+  # contents: write  # Backpush pre-commit fixes
 
 
 jobs:
