@@ -4,6 +4,10 @@ name: Common issues check
 
 on: [pull_request]
 
+permissions:
+  contents: write # Backpush pre-commit fixes
+
+
 jobs:
   pre-commit:
     runs-on: ubuntu-latest

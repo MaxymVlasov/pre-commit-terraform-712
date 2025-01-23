@@ -11,8 +11,8 @@ on:
   - cron: 00 00 * * *
 
 permissions:
-  contents: read
-  packages: write
+  contents: read # To read Dockerfile and codebase
+  packages: write # To publish container image
 
 jobs:
   docker:
