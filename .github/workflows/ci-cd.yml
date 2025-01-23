@@ -3,7 +3,7 @@
 name: 🧪
 
 permissions: {}
-  # contents: read #  To read codebase
+# contents: read #  To read codebase
 
 on:
   merge_group:

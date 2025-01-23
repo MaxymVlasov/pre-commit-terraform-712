@@ -3,7 +3,7 @@
 name: ⏳
 
 permissions: {}
-  # contents: read  # To read codebase
+# contents: read  # To read codebase
 
 on:
   pull_request:

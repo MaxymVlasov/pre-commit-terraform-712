@@ -3,7 +3,7 @@
 name: Build Dockerfile if changed and run smoke tests
 
 permissions: {}
-  # contents: read  # To read Dockerfile and codebase
+# contents: read  # To read Dockerfile and codebase
 
 
 on: [pull_request]

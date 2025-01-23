@@ -3,7 +3,7 @@
 name: Release
 
 permissions: {}
-  # contents: write  # To create releases
+# contents: write  # To create releases
 
 on:
   workflow_dispatch:

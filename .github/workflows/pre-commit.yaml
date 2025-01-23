@@ -3,7 +3,7 @@
 name: Common issues check
 
 permissions: {}
-  # contents: write  # Backpush pre-commit fixes
+# contents: write  # Backpush pre-commit fixes
 
 on: [pull_request]
 

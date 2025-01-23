@@ -3,9 +3,9 @@
 name: Mark or close stale issues and PRs
 
 permissions: {}
-  # contents: write  # To delete branches.
-  # issues: write  # To mark and close stale issues.
-  # pull-requests: write  # To mark and close stale pull requests.
+# contents: write  # To delete branches.
+# issues: write  # To mark and close stale issues.
+# pull-requests: write  # To mark and close stale pull requests.
 
 on:
   schedule:

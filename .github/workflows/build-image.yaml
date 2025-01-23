@@ -3,8 +3,8 @@
 name: Publish container image
 
 permissions: {}
-  # contents: read  # To read Dockerfile and codebase
-  # packages: write  # To publish container image
+# contents: read  # To read Dockerfile and codebase
+# packages: write  # To publish container image
 
 on:
   workflow_dispatch:
