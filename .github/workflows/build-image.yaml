@@ -9,6 +9,11 @@ on:
     - created
   schedule:
   - cron: 00 00 * * *
+  push:
+
+permissions:
+  contents: read
+  packages: write
 
 jobs:
   docker:
@@ -32,10 +37,16 @@ jobs:
     - name: Set tag for image
       run: >-
         echo IMAGE_TAG=$(
-        [ ${{ github.ref_type }} == 'tag' ]
-        && echo ${{ github.ref_name }}
-        || echo 'latest'
+          [ ${{ github.ref_type }} == 'tag' ]
+          && echo ${{ github.ref_name }}
+          || echo 'latest'
         ) >> $GITHUB_ENV
+
+    - name: Set IMAGE_REPO environment variable
+      run: >-
+        echo "IMAGE_REPO=ghcr.io/$(
+          echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]'
+          )" >> $GITHUB_ENV
 
     - name: Set up Docker Buildx
       # yamllint disable-line rule:line-length
@@ -52,8 +63,8 @@ jobs:
         platforms: linux/amd64,linux/arm64
         push: true
         tags: |
-          ghcr.io/${{ github.repository }}:${{ env.IMAGE_TAG }}
-          ghcr.io/${{ github.repository }}:latest
+          ${{ env.IMAGE_REPO }}:${{ env.IMAGE_TAG }}
+          ${{ env.IMAGE_REPO }}:latest
         # Fix multi-platform: https://github.com/docker/buildx/issues/1533
         provenance: false
         secrets: |
@@ -70,7 +81,7 @@ jobs:
         platforms: linux/amd64,linux/arm64
         push: true
         tags: |
-          ghcr.io/${{ github.repository }}:nightly
+          ${{ env.IMAGE_REPO }}:nightly
         # Fix multi-platform: https://github.com/docker/buildx/issues/1533
         provenance: false
         secrets: |
