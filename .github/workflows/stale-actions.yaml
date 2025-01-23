@@ -5,6 +5,12 @@ on:
   schedule:
   - cron: 0 0 * * *
 
+permissions:
+  contents: none
+  # contents: write  # To delete branches.
+  # issues: write  # To mark and close stale issues.
+  # pull-requests: write  # To mark and close stale pull requests.
+
 jobs:
   stale:
     runs-on: ubuntu-latest

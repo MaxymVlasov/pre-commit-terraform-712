@@ -9,6 +9,10 @@ on:
     - edited
     - synchronize
 
+permissions:
+  contents: none
+  # pull-requests: read  # To read the PR title
+
 jobs:
   main:
     name: Validate PR title

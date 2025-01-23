@@ -8,7 +8,8 @@ env:
   IMAGE_TAG: pr-test
 
 permissions:
-  contents: read
+  contents: none
+  # contents: read  # To read Dockerfile and codebase
 
 jobs:
   build:

@@ -17,7 +17,8 @@ on:
   workflow_call:  # a way to embed the main tests
 
 permissions:
-  contents: read
+  contents: none
+  # contents: read #  To read codebase
 
 concurrency:
   group: >-
