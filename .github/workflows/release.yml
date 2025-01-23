@@ -2,6 +2,9 @@
 
 name: Release
 
+permissions: {}
+  # contents: write  # To create releases
+
 on:
   workflow_dispatch:
   push:
@@ -14,10 +17,6 @@ on:
     - .pre-commit-hooks.yaml
     # Ignore paths
     - '!tests/**'
-
-permissions:
-  contents: none
-  # contents: write  # To create releases
 
 jobs:
   release:

@@ -2,6 +2,9 @@
 
 name: 🧪
 
+permissions: {}
+  # contents: read #  To read codebase
+
 on:
   merge_group:
   push:
@@ -15,10 +18,6 @@ on:
     - pre-commit-ci-update-config  # pre-commit.ci always creates a PR
   pull_request:
   workflow_call:  # a way to embed the main tests
-
-permissions:
-  contents: none
-  # contents: read #  To read codebase
 
 concurrency:
   group: >-

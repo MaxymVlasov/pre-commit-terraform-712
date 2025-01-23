@@ -2,6 +2,9 @@
 
 name: ⏳
 
+permissions: {}
+  # contents: read  # To read codebase
+
 on:
   pull_request:
     paths:  # only changes to this workflow itself trigger PR testing
@@ -9,10 +12,6 @@ on:
   schedule:
   - cron: 3 5 * * *  # run daily at 5:03 UTC
   workflow_dispatch:  # manual trigger
-
-permissions:
-  contents: none
-  # contents: read  # To read codebase
 
 run-name: >-
   🌃

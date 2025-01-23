@@ -2,12 +2,10 @@
 
 name: Common issues check
 
-on: [pull_request]
-
-permissions:
-  contents: none
+permissions: {}
   # contents: write  # Backpush pre-commit fixes
 
+on: [pull_request]
 
 jobs:
   pre-commit:

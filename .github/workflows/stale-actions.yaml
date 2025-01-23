@@ -1,15 +1,15 @@
 ---
 
 name: Mark or close stale issues and PRs
-on:
-  schedule:
-  - cron: 0 0 * * *
 
-permissions:
-  contents: none
+permissions: {}
   # contents: write  # To delete branches.
   # issues: write  # To mark and close stale issues.
   # pull-requests: write  # To mark and close stale pull requests.
+
+on:
+  schedule:
+  - cron: 0 0 * * *
 
 jobs:
   stale:

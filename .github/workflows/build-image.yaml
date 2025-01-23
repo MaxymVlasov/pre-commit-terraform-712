@@ -2,6 +2,10 @@
 
 name: Publish container image
 
+permissions: {}
+  # contents: read  # To read Dockerfile and codebase
+  # packages: write  # To publish container image
+
 on:
   workflow_dispatch:
   release:
@@ -10,11 +14,6 @@ on:
   schedule:
   - cron: 00 00 * * *
   push:
-
-permissions:
-  contents: none
-  # contents: read  # To read Dockerfile and codebase
-  # packages: write  # To publish container image
 
 jobs:
   docker:

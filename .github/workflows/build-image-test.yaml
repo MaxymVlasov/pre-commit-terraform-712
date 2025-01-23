@@ -2,14 +2,14 @@
 
 name: Build Dockerfile if changed and run smoke tests
 
+permissions: {}
+  # contents: read  # To read Dockerfile and codebase
+
+
 on: [pull_request]
 
 env:
   IMAGE_TAG: pr-test
-
-permissions:
-  contents: none
-  # contents: read  # To read Dockerfile and codebase
 
 jobs:
   build:
