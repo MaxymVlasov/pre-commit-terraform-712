@@ -37,9 +37,9 @@ jobs:
     - name: Set tag for image
       run: >-
         echo IMAGE_TAG=$(
-          [ ${{ github.ref_type }} == 'tag' ]
-          && echo ${{ github.ref_name }}
-          || echo 'latest'
+        [ ${{ github.ref_type }} == 'tag' ]
+        && echo ${{ github.ref_name }}
+        || echo 'latest'
         ) >> $GITHUB_ENV
 
     - name: Set IMAGE_REPO environment variable
