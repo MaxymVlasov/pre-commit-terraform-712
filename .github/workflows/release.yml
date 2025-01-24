@@ -19,6 +19,10 @@ permissions:
 
 jobs:
   release:
+    permissions:
+      # for cycjimmy/semantic-release-action to create a release
+      contents: write
+
     name: Release
     runs-on: ubuntu-latest
     steps:
