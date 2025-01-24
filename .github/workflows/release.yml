@@ -20,8 +20,8 @@ permissions:
 jobs:
   release:
     permissions:
-      # # for cycjimmy/semantic-release-action to create a release
-      # contents: write
+      # for cycjimmy/semantic-release-action to create a release
+      contents: write
       # for cycjimmy/semantic-release-action to write comments to issues
       issues: write
 
