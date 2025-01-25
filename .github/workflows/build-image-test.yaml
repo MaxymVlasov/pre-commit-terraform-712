@@ -83,7 +83,7 @@ jobs:
     - name: Dive - check image for waste files
       if: steps.changed-files-specific.outputs.any_changed == 'true'
       # yamllint disable-line rule:line-length
-      uses: MaxymVlasov/dive-action@379af3fc636888ada5899c997e8b52db6ad45023  # v1.0.1
+      uses: MaxymVlasov/dive-action@8d7cc79755a2d9fcbaa0a8e1e7af22026715e04e # all deps updated
       with:
         image: ${{ env.IMAGE }}
         config-file: ${{ github.workspace }}/.github/.dive-ci.yaml
