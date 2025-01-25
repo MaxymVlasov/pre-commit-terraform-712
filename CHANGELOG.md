@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+# [1.2.0](https://github.com/MaxymVlasov/pre-commit-terraform-712/compare/v1.1.0...v1.2.0) (2025-01-25)
+
+
+### Features
+
+* Test pre-commit & release comments ([#15](https://github.com/MaxymVlasov/pre-commit-terraform-712/issues/15)) ([b34ecee](https://github.com/MaxymVlasov/pre-commit-terraform-712/commit/b34ecee7cc8a99a30a7766ecd83a393d1e2411a7))
+* update ([#16](https://github.com/MaxymVlasov/pre-commit-terraform-712/issues/16)) ([c9de01c](https://github.com/MaxymVlasov/pre-commit-terraform-712/commit/c9de01c94e918e556f9c258f5d461e37e7363fa1))
+
 # [1.1.0](https://github.com/MaxymVlasov/pre-commit-terraform-712/compare/v1.0.1...v1.1.0) (2025-01-25)
 
 
