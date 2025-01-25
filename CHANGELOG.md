@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.1](https://github.com/MaxymVlasov/pre-commit-terraform-712/compare/v1.4.0...v1.4.1) (2025-01-25)
+
+
+### Bug Fixes
+
+* Revert "feat: Test release-> docker publich trigger (all permissions … ([#20](https://github.com/MaxymVlasov/pre-commit-terraform-712/issues/20)) ([f28b8bc](https://github.com/MaxymVlasov/pre-commit-terraform-712/commit/f28b8bcee1fb182e77b1302f9d7b9f39e1b33fe1)), closes [#19](https://github.com/MaxymVlasov/pre-commit-terraform-712/issues/19)
+
 # [1.4.0](https://github.com/MaxymVlasov/pre-commit-terraform-712/compare/v1.3.0...v1.4.0) (2025-01-25)
 
 
