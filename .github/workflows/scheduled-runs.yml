@@ -2,6 +2,8 @@
 
 name: ⏳
 
+permissions: {}
+
 on:
   pull_request:
     paths:  # only changes to this workflow itself trigger PR testing
