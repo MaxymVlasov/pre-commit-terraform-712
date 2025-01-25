@@ -6,7 +6,7 @@ ARG TARGETARCH
 WORKDIR /bin_dir
 
 RUN apk add --no-cache \
-    # Builder  deps
+    # Builder deps
     bash=~5 \
     curl=~8 && \
     # Upgrade packages for be able get latest Checkov
