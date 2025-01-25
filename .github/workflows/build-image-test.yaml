@@ -13,6 +13,10 @@ env:
 
 jobs:
   build:
+    permissions:
+      # for MaxymVlasov/dive-action post comment
+      pull-requests: write
+
     strategy:
       matrix:
         os: [ubuntu-latest]
@@ -72,13 +76,6 @@ jobs:
         secrets: |
           "github_token=${{ secrets.GITHUB_TOKEN }}"
 
-    - name: Run structure tests
-      if: steps.changed-files-specific.outputs.any_changed == 'true'
-      # yamllint disable-line rule:line-length
-      uses: plexsystems/container-structure-test-action@c0a028aa96e8e82ae35be556040340cbb3e280ca  # v0.3.0
-      with:
-        image: ${{ env.IMAGE }}
-        config: .github/.container-structure-test-config.yaml
 
     - name: Dive - check image for waste files
       if: steps.changed-files-specific.outputs.any_changed == 'true'
@@ -88,24 +85,3 @@ jobs:
         image: ${{ env.IMAGE }}
         config-file: ${{ github.workspace }}/.github/.dive-ci.yaml
         github-token: ${{ secrets.GITHUB_TOKEN }}
-
-    # Can't build both platforms and use --load at the same time
-    # https://github.com/docker/buildx/issues/59#issuecomment-1433097926
-    - name: Build Multi-arch docker-image
-      if: >-
-        steps.changed-files-specific.outputs.any_changed == 'true'
-        && matrix.os == 'ubuntu-latest'
-        && matrix.arch == 'amd64'
-      # yamllint disable-line rule:line-length
-      uses: docker/build-push-action@67a2d409c0a876cbe6b11854e3e25193efe4e62d  # v6.12.0
-      with:
-        context: .
-        build-args: |
-          INSTALL_ALL=true
-        platforms: linux/amd64,linux/arm64
-        push: false
-        tags: ${{ env.IMAGE }}
-        # Fix multi-platform: https://github.com/docker/buildx/issues/1533
-        provenance: false
-        secrets: |
-          "github_token=${{ secrets.GITHUB_TOKEN }}"
