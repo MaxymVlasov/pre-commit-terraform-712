@@ -5,6 +5,8 @@ name: >-
   [DO NOT CLICK]
   Reusable Tox
 
+permissions: {}
+
 on:
   workflow_call:
     inputs:
