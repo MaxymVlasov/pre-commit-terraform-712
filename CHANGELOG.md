@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+# [1.3.0](https://github.com/MaxymVlasov/pre-commit-terraform-712/compare/v1.2.0...v1.3.0) (2025-01-25)
+
+
+### Features
+
+* Triggher Docker image build on release ([#17](https://github.com/MaxymVlasov/pre-commit-terraform-712/issues/17)) ([f94e679](https://github.com/MaxymVlasov/pre-commit-terraform-712/commit/f94e679aa8d0101af7dab0741e4a899cc424ba73))
+
 # [1.2.0](https://github.com/MaxymVlasov/pre-commit-terraform-712/compare/v1.1.0...v1.2.0) (2025-01-25)
 
 
