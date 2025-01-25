@@ -28,7 +28,7 @@ readonly HOOK_ID=${HOOK_ID%%.*}
 # Arguments:
 #   script_dir - absolute path to hook dir location
 #######################################################################
-function common::initialize {
+function    common::initialize {
   local -r script_dir=$1
   # source getopt function
   # shellcheck source=../lib_getopt
