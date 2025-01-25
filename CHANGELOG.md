@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+# [1.1.0](https://github.com/MaxymVlasov/pre-commit-terraform-712/compare/v1.0.1...v1.1.0) (2025-01-25)
+
+
+### Features
+
+* Test Validattion title action, tests in Dockerfile and "PR in release" ([#13](https://github.com/MaxymVlasov/pre-commit-terraform-712/issues/13)) ([9c1d58b](https://github.com/MaxymVlasov/pre-commit-terraform-712/commit/9c1d58bc75bc398c3860be8f74fa467a4616f5c9))
+
 ## [1.0.1](https://github.com/MaxymVlasov/pre-commit-terraform-712/compare/v1.0.0...v1.0.1) (2025-01-24)
 
 
