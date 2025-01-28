@@ -84,4 +84,6 @@ jobs:
       with:
         image: ${{ env.IMAGE }}
         config-file: ${{ github.workspace }}/.github/.dive-ci.yaml
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        # github-token: ${{ secrets.GITHUB_TOKEN }}
+        dive-image-registry: wagoodman/dive
+        dive-image-version: v0.12.0
