@@ -5,9 +5,6 @@ name: Build Dockerfile if changed and run smoke tests
 on:
   pull_request:
 
-# permissions:
-#   contents: read
-
 env:
   IMAGE_TAG: pr-test
 
@@ -63,8 +60,8 @@ jobs:
       uses: docker/build-push-action@67a2d409c0a876cbe6b11854e3e25193efe4e62d  # v6.12.0
       with:
         context: .
-        build-args: |
-          INSTALL_ALL=true
+        # build-args: |
+        #   INSTALL_ALL=true
         # yamllint disable-line rule:line-length
         platforms: >-  # Only one allowed here, see https://github.com/docker/buildx/issues/59#issuecomment-1433097926
           linux/${{ matrix.arch }}
@@ -83,6 +80,7 @@ jobs:
       uses: MaxymVlasov/dive-action@bdf67ba04f31483273ca2028ed4af3bc4bb3daca
       with:
         image: ${{ env.IMAGE }}
+        dive-image-registry: '|'
         always-comment: false
         config-file: ${{ github.workspace }}/.github/.dive-ci.yaml
         github-token: ${{ secrets.GITHUB_TOKEN }}
