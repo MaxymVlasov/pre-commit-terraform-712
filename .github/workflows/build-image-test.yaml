@@ -83,7 +83,7 @@ jobs:
       uses: MaxymVlasov/dive-action@709b4c6c36d666e8d8bacf1e9da452ae798ae432
       with:
         image: ${{ env.IMAGE }}
-        always-comment: true
+        always-comment: false
         config-file: ${{ github.workspace }}/.github/.dive-ci.yaml
         github-token: ${{ secrets.GITHUB_TOKEN }}
         # dive-image-registry: wagoodman/dive
