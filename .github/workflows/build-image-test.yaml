@@ -5,8 +5,8 @@ name: Build Dockerfile if changed and run smoke tests
 on:
   pull_request:
 
-permissions:
-  contents: read
+# permissions:
+#   contents: read
 
 env:
   IMAGE_TAG: pr-test
