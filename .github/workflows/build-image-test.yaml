@@ -77,11 +77,11 @@ jobs:
     - name: Dive - check image for waste files
       if: steps.changed-files-specific.outputs.any_changed == 'true'
       # yamllint disable-line rule:line-length
-      uses: MaxymVlasov/dive-action@bdf67ba04f31483273ca2028ed4af3bc4bb3daca
+      uses: MaxymVlasov/dive-action@e7f9cbe8df63b6a2fc070a7294230364b2628c05
       with:
         image: ${{ env.IMAGE }}
-        dive-image-registry: '|'
-        always-comment: false
+        # dive-image-registry: '|'
+        # always-comment: false
         config-file: ${{ github.workspace }}/.github/.dive-ci.yaml
         github-token: ${{ secrets.GITHUB_TOKEN }}
         # dive-image-registry: wagoodman/dive
