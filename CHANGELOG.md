@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.97.3](https://github.com/antonbabenko/pre-commit-terraform/compare/v1.97.2...v1.97.3) (2025-02-04)
+
+
+### Bug Fixes
+
+* **`terraform_docs`:** Fix bug introduced in `v1.97.2` ([#801](https://github.com/antonbabenko/pre-commit-terraform/issues/801)) ([64b81f4](https://github.com/antonbabenko/pre-commit-terraform/commit/64b81f449344ed72d180d57ce0a801389c018584)), closes [#796](https://github.com/antonbabenko/pre-commit-terraform/issues/796)
+
+## [1.97.2](https://github.com/antonbabenko/pre-commit-terraform/compare/v1.97.1...v1.97.2) (2025-02-03)
+
+
+### Bug Fixes
+
+* **`terraform_docs`:** Allow having whitespaces in path to `.terraform-docs.yaml` config file ([#796](https://github.com/antonbabenko/pre-commit-terraform/issues/796)) ([7d83911](https://github.com/antonbabenko/pre-commit-terraform/commit/7d839114a62b61f2658167356df7e5da1a42ef8f))
+
+## [1.97.1](https://github.com/antonbabenko/pre-commit-terraform/compare/v1.97.0...v1.97.1) (2025-02-01)
+
+
+### Bug Fixes
+
+* Parallelism CPU calculation inside Kubernetes and Docker with limits ([#799](https://github.com/antonbabenko/pre-commit-terraform/issues/799)) ([58a89a1](https://github.com/antonbabenko/pre-commit-terraform/commit/58a89a1cc0760daa515f58da9bb8b167f01044bb))
+
 # [1.97.0](https://github.com/antonbabenko/pre-commit-terraform/compare/v1.96.3...v1.97.0) (2025-01-16)
 
 
