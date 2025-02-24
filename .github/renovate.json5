@@ -11,5 +11,5 @@
     // Raise a PR first before any automerging. | https://docs.renovatebot.com/presets-default/#automergepr
     ":automergePr",
   ],
-  "schedule": ["every weekday"], // for test proposes
+  schedule: ["every weekday"], // for test proposes
 }
