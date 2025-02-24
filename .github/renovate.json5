@@ -12,4 +12,10 @@
     ":automergePr",
   ],
   schedule: ["every weekday"], // for test proposes
+
+  // To make happy 'Validate PR title' GHA
+  commitMessageLowerCase: "never",
+  // Disable auto-rebase on every commit to avoid reaching Github limits on macos runners
+  rebaseWhen: "conflicted",
+
 }
