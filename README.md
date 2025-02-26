@@ -1,4 +1,4 @@
-# Collection  of git hooks for Terraform to be used with [pre-commit framework](http://pre-commit.com/)
+# Collection of git hooks for Terraform to be used with [pre-commit framework](http://pre-commit.com/)
 
 [![Latest Github tag]](https://github.com/antonbabenko/pre-commit-terraform/releases)
 ![Maintenance status](https://img.shields.io/maintenance/yes/2025.svg)
