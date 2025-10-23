@@ -187,7 +187,7 @@ function terraform_docs {
     config_file_no_color="$config_file$(date +%s).yml"
 
     if [ "$PRE_COMMIT_COLOR" = "never" ] &&
-      [[ $(grep -e '^formatter:' "$config_file") == *"pretty"* ]] &&
+      [[ $(grep -E '^formatter:' "$config_file") == *"pretty"* ]] &&
       [[ $(grep '  color: ' "$config_file") != *"false"* ]]; then
 
       cp "$config_file" "$config_file_no_color"
@@ -207,7 +207,7 @@ function terraform_docs {
     #
     if $create_if_not_exist && [[ ! -f "$output_file" ]]; then
       dir_have_tf_files="$(
-        find . -maxdepth 1 -type f | sed 's|.*\.||' | sort -u | grep -oE '^tf$|^tfvars$' ||
+        find . -maxdepth 1 \( -name '*.tf' -o -name '*.tofu' -o -name '*.tfvars' \) -type f ||
           exit 0
       )"
 

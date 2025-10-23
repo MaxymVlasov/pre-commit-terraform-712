@@ -4,7 +4,7 @@
   entry: hooks/infracost_breakdown.sh
   language: script
   require_serial: true
-  files: \.(tf(vars)?|hcl)$
+  files: \.(tf|tofu|tfvars|hcl)$
   exclude: \.terraform/.*$
 
 - id: terraform_fmt
@@ -13,7 +13,9 @@
     Rewrites all Terraform configuration files to a canonical format.
   entry: hooks/terraform_fmt.sh
   language: script
-  files: (\.tf|\.tfvars)$
+  # Supported extensions by Terraform specified in
+  # https://github.com/hashicorp/terraform/blob/0c63fb2b097edcd5cb1a91322765a414206fbea2/internal/command/fmt.go#L30-L35
+  files: \.(tf|tofu|tfvars|tftest\.hcl|tfmock\.hcl)$
   exclude: \.terraform/.*$
 
 - id: terraform_docs
@@ -24,7 +26,7 @@
   require_serial: true
   entry: hooks/terraform_docs.sh
   language: script
-  files: (\.tf|\.terraform\.lock\.hcl)$
+  files: \.(tf|tofu|terraform\.lock\.hcl)$
   exclude: \.terraform/.*$
 
 - id: terraform_docs_without_aggregate_type_defaults
@@ -35,7 +37,7 @@
   require_serial: true
   entry: hooks/terraform_docs.sh
   language: script
-  files: (\.tf)$
+  files: \.(tf|tofu)$
   exclude: \.terraform/.*$
 
 - id: terraform_docs_replace
@@ -44,7 +46,7 @@
   require_serial: true
   entry: python -Im pre_commit_terraform replace-docs
   language: python
-  files: (\.tf)$
+  files: \.(tf|tofu)$
   exclude: \.terraform/.*$
 
 - id: terraform_validate
@@ -53,7 +55,7 @@
   require_serial: true
   entry: hooks/terraform_validate.sh
   language: script
-  files: \.(tf(vars)?|terraform\.lock\.hcl)$
+  files: \.(tf|tofu|tfvars|terraform\.lock\.hcl)$
   exclude: \.terraform/.*$
 
 - id: terraform_providers_lock
@@ -71,7 +73,7 @@
   require_serial: true
   entry: hooks/terraform_tflint.sh
   language: script
-  files: (\.tf|\.tfvars)$
+  files: \.(tf|tofu|tfvars)$
   exclude: \.terraform/.*$
 
 - id: terragrunt_fmt
@@ -114,7 +116,7 @@
     Static analysis of Terraform templates to spot potential security issues.
   require_serial: true
   entry: hooks/terraform_tfsec.sh
-  files: \.tf(vars)?$
+  files: \.(tf|tofu|tfvars)$
   language: script
 
 - id: terraform_trivy
@@ -123,7 +125,7 @@
     Static analysis of Terraform templates to spot potential security issues.
   require_serial: true
   entry: hooks/terraform_trivy.sh
-  files: \.tf(vars)?$
+  files: \.(tf|tofu|tfvars)$
   language: script
 
 - id: checkov
@@ -133,7 +135,7 @@
   language: python
   pass_filenames: false
   always_run: false
-  files: \.tf$
+  files: \.(tf|tofu)$
   exclude: \.terraform/.*$
   require_serial: true
 
@@ -143,7 +145,7 @@
   entry: hooks/terraform_checkov.sh
   language: script
   always_run: false
-  files: \.tf$
+  files: \.(tf|tofu)$
   exclude: \.terraform/.*$
   require_serial: true
 
@@ -155,7 +157,7 @@
   pass_filenames: false
   always_run: false
   require_serial: true
-  files: \.tf$
+  files: \.(tf|tofu)$
   exclude: \.terraform/.*$
 
 - id: terrascan
@@ -163,7 +165,7 @@
   description: Runs terrascan on Terraform templates.
   language: script
   entry: hooks/terrascan.sh
-  files: \.tf$
+  files: \.(tf|tofu)$
   exclude: \.terraform/.*$
   require_serial: true
 
@@ -174,5 +176,5 @@
   entry: hooks/tfupdate.sh
   args:
   - --args=terraform
-  files: \.tf$
+  files: \.(tf|tofu)$
   require_serial: true
