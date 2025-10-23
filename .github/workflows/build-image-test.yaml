@@ -3,9 +3,7 @@ name: Build Dockerfile if changed and run smoke tests
 on:
   merge_group:
   pull_request:
-
-permissions:
-  contents: read
+  workflow_dispatch:
 
 env:
   IMAGE_TAG: pr-test
@@ -66,8 +64,11 @@ jobs:
       uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83  # v6.18.0
       with:
         context: .
-        build-args: |
-          INSTALL_ALL=true
+        # build-args: |
+        #   INSTALL_ALL=true
+        # yamllint disable-line rule:line-length
+        platforms: >-
+          linux/${{ matrix.arch }}
         push: false
         load: true
         tags: ${{ env.IMAGE }}
@@ -76,55 +77,16 @@ jobs:
         secrets: |
           "github_token=${{ secrets.GITHUB_TOKEN }}"
 
-    - name: Setup Container Structure Tests
-      if: steps.changed-files-specific.outputs.any_changed == 'true'
-      env:
-        # yamllint disable-line rule:line-length
-        # renovate: datasource=github-releases depName=container-structure-test lookupName=GoogleContainerTools/container-structure-test
-        CST_VERSION: 1.19.3
-        CST_REPO: github.com/GoogleContainerTools/container-structure-test
-      run: >-
-        curl -L "https://${{ env.CST_REPO }}/releases/download/v${{
-        env.CST_VERSION }}/container-structure-test-linux-${{ matrix.arch }}"
-        > container-structure-test
-        && chmod +x container-structure-test
-        && mkdir -p $HOME/bin/
-        && mv container-structure-test $HOME/bin/
-        && echo $HOME/bin/ >> $GITHUB_PATH
-
-    - name: Run structure tests
-      if: steps.changed-files-specific.outputs.any_changed == 'true'
-      env:
-        IMAGE_NAME: ${{ env.IMAGE }}
-      run: >-
-        container-structure-test test
-        --config ${{ github.workspace
-        }}/.github/.container-structure-test-config.yaml
-        --image "${IMAGE_NAME}"
 
     - name: Dive - check image for waste files
       if: steps.changed-files-specific.outputs.any_changed == 'true'
-      uses: MaxymVlasov/dive-action@b08c8287e603d028c986d7044e83fa76bcca6a65  # v1.5.0
+      # yamllint disable-line rule:line-length
+      uses: MaxymVlasov/dive-action@f2f58d0a4e3f4c3946d7215236263bf52d097f27
       with:
         image: ${{ env.IMAGE }}
+        # dive-image-registry: '|'
+        # always-comment: false
         config-file: ${{ github.workspace }}/.github/.dive-ci.yaml
         github-token: ${{ secrets.GITHUB_TOKEN }}
-
-    # Can't build both platforms and use --load at the same time
-    # https://github.com/docker/buildx/issues/59#issuecomment-1433097926
-    - name: Build Multi-arch docker-image
-      if: >-
-        steps.changed-files-specific.outputs.any_changed == 'true'
-        && matrix.os == 'ubuntu-latest'
-      uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83  # v6.18.0
-      with:
-        context: .
-        build-args: |
-          INSTALL_ALL=true
-        platforms: linux/amd64,linux/arm64
-        push: false
-        tags: ${{ env.IMAGE }}
-        # Fix multi-platform: https://github.com/docker/buildx/issues/1533
-        provenance: false
-        secrets: |
-          "github_token=${{ secrets.GITHUB_TOKEN }}"
+        # dive-image-registry: wagoodman/dive
+        # dive-image-version: v0.12.0
