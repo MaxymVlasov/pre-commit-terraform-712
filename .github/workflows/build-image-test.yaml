@@ -88,6 +88,5 @@ jobs:
         # always-comment: false
         config-file: ${{ github.workspace }}/.github/.dive-ci.yaml
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        collapse-inefficient-files-details: true
         # dive-image-registry: wagoodman/dive
         # dive-image-version: v0.12.0
