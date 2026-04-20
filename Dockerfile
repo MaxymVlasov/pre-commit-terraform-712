@@ -1,4 +1,4 @@
-FROM python:3.12-alpine@sha256:9b8808206f4a956130546a32cbdd8633bc973b19db2923b7298e6f90cc26db08 AS python_base
+FROM python:3.12-alpine@sha256:02a73ead8397e904cea6d17e18516f1df3590e05dc8823bd5b1c7f849227d272 AS python_base
 
 FROM python_base AS builder
 ARG TARGETOS
@@ -64,6 +64,8 @@ RUN if [ "$INSTALL_ALL" != "false" ]; then \
         echo "TFUPDATE_VERSION=latest"       >> /.env && \
         echo "TRIVY_VERSION=latest"          >> /.env \
     ; fi
+
+ARG GITHUB_TOKEN=${GITHUB_TOKEN:-""}
 
 # Docker `RUN`s shouldn't be consolidated here
 # hadolint global ignore=DL3059

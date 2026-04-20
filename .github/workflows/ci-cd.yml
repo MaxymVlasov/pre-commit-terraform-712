@@ -453,17 +453,17 @@ jobs:
         # NOTE: The latest and the lowest supported Pythons are prioritized
         # NOTE: to improve the responsiveness. It's nice to see the most
         # NOTE: important results first.
-        - 3.13
-        - 3.9
+        - 3.14
         # str
         - >-
           3.10
+        - 3.13
         - 3.12
         - 3.11
         runner-vm-os:
         - ubuntu-24.04
-        - macos-14
-        - macos-13
+        - macos-15
+        - macos-15-intel
         - windows-2025
         toxenv:
         - pytest
@@ -505,6 +505,13 @@ jobs:
       xfail: ${{ fromJSON(matrix.xfail) }}
     secrets:
       codecov-token: ${{ secrets.CODECOV_TOKEN }}
+
+  lint-github-actions:
+    name: Lint GitHub Actions
+    permissions:
+      security-events: write
+    # yamllint disable-line rule:line-length
+    uses: zizmorcore/workflow/.github/workflows/reusable-zizmor.yml@3bb5e95068d0f44b6d2f3f7e91379bed1d2f96a8
 
   check:  # This job does nothing and is only used for the branch protection
 
